@@ -64,6 +64,26 @@ exit
 
 ! Guardar la configuración
 write memory
+
+
+  !----VLAN--
+
+    !TRONCAL DINAMICO
+  interface gig0/2
+ switchport mode dynamic desirable
+ switchport trunk native vlan 100
+exit
+    interface gig0/2
+ switchport mode dynamic auto
+ switchport trunk native vlan 100
+exit
+
+    ! VOICE VLAN
+   interface fa0/4
+ switchport mode access
+ switchport access vlan 10
+ switchport voice vlan 40
+ mls qos trust cos
   </pre>
 </body>
 </html>
